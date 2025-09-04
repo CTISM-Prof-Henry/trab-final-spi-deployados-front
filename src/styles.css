@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  /* Cores Primárias do Projeto */
+  --primary-color-success: #629E69;
+  --primary-color: #2B367D;
+  --primary-color-light: #5C9DF2;
+  --primary-color-dark: #27366A;
+
+  /* Cores de Feedback */
+  --success-color: #4CAF50;
+  --warning-color: #FFC107;
+  --error-color: #F44336;
+
+  /* Cores Neutras fundo */
+  --text-color: #212121;
+  --text-color-secondary: #757575;
+  --background-color-white: #F2F2F2;
+  --background-color-gray: #D9D9D9;
+  --black: #000000;
+  --white: #FFFFFF;
+}
+
+.mat-tooltip {
+  font-size: 12px !important;
+}
+
+@font-face {
+  font-family: 'Rawline';
+  src: url('/assets/font/rawline/rawline-100.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rawline';
+  src: url('/assets/font/rawline/rawline-200.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rawline';
+  src: url('/assets/font/rawline/rawline-300.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rawline';
+  src: url('/assets/font/rawline/rawline-400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rawline';
+  src: url('/assets/font/rawline/rawline-500.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+/* aplica globalmente, inclusive nos componentes Material */
+html, body, .mat-typography {
+  font-family: 'Rawline', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif !important;
+}
+
+
+html, body {
+  font-family: 'Rawline', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif !important;  margin: 0;
+  background-color: var(--background-color-white);
+  height: 100%;
+}
+
+.mat-typography,
+.mat-typography h1, .mat-typography h2, .mat-typography h3,
+.mat-typography h4, .mat-typography h5, .mat-typography h6,
+.mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3,
+.mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6,
+.mat-title, .mat-subheading-2, .mat-body-1, .mat-body-2 {
+  font-family: 'Rawline', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif !important;
+}
+
+

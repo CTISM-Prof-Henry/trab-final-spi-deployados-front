@@ -1,0 +1,19 @@
+.estilos{
+  padding: 3px 32px 3px 32px;
+  border-radius: 15px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-success {
+  background-color: var(--primary-color-success);
+  color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-success:hover{
+  opacity: 0.9;
+}

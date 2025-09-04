@@ -1,0 +1,73 @@
+.navbar {
+  background-color: #2a3f6f;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  height: 80px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 70px;
+  margin-right: 16px;
+}
+
+.navbar-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0;
+  }
+}
+
+   .navbar-spacer {
+     flex: 1 1 auto;
+   }
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.action-button, .user-menu-button {
+  background-color: #f0f2f5;
+  color: #333;
+  border-radius: 20px;
+  padding: 0 20px;
+  height: 40px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .mat-icon {
+    color: #555;
+  }
+}
+
+.user-menu-button {
+  gap: 8px;
+}
+
+   ::ng-deep .user-menu-button .mat-button-wrapper {
+     padding: 0;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+   }

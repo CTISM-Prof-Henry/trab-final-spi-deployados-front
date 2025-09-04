@@ -1,0 +1,49 @@
+/* Contêiner principal, necessário para o posicionamento do label */
+.input-container {
+  position: relative;
+  margin-bottom: 24px; /* Espaçamento entre os campos */
+}
+
+/* Estilo do nosso input */
+.custom-input {
+  width: 100%;
+  height: 50px;
+  border: 2px solid var(--primary-color);
+  border-radius: 15px;
+  padding: 0 15px;
+  font-size: 16px;
+  box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+  outline: none; /* Remove a borda padrão do navegador ao focar */
+  background-color: var(--background-color-gray);
+}
+
+/* Estilo do nosso label */
+.custom-label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: var(--primary-color);
+  background-color: var(--background-color-gray); /* Cor de fundo para "cortar" a borda */
+  padding: 0 5px;
+  transition: all 0.2s ease-out;
+  pointer-events: none; /* Permite clicar "através" do label no input */
+}
+
+/* O EFEITO MÁGICO: Quando o input está focado ou preenchido... */
+.custom-input:focus ~ .custom-label,
+.custom-input:not(:placeholder-shown) ~ .custom-label {
+  /* ...o label sobe e diminui de tamanho */
+  transform: translateY(-26px) scale(0.9);
+  font-weight: 500;
+}
+
+/* 1. Por padrão, o placeholder fica totalmente transparente (invisível) */
+.custom-input::placeholder {
+  color: transparent;
+  transition: color 0.3s ease-in-out; /* Opcional: para um efeito suave de fade-in */
+}
+
+/* 2. Quando o input é focado (clicado), a cor do placeholder muda, tornando-o visível */
+.custom-input:focus::placeholder {
+  color: var(--text-color-secondary); /* Uma cor sutil, como um cinza claro */
+}

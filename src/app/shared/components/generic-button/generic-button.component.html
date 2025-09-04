@@ -1,0 +1,10 @@
+<button
+  class="estilos"
+  mat-raised-button
+  [ngClass]="'btn-' + color"
+  [type]="type"
+  [disabled]="disabled"
+  [matTooltip]="tooltipText"
+  (click)="onClick()">
+  {{ text }}
+</button>
