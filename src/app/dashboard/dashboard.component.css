@@ -22,8 +22,10 @@
   justify-content: flex-end; /* <<< A MÁGICA ACONTECE AQUI */
   margin-top: 16px; /* Adiciona um espaço entre a linha dos filtros e a linha do botão */
 }
-.agendar-button .mat-icon {
-  margin-right: 8px;
+
+.hoje-button{
+  --btn-height: 36px;
+  --btn-padding: 0 16px;
 }
 
 .calendar-nav {
@@ -45,10 +47,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.today-button {
-  border-color: var(--background-color-gray);
 }
 
 .calendar-placeholder {

@@ -36,7 +36,15 @@
   <div class="calendar-nav">
     <h2>11 – 15 de ago. de 2025</h2>
     <div class="nav-actions">
-      <button mat-stroked-button class="today-button">hoje</button>
+      <app-generic-button
+        class="hoje-button"
+        text="Hoje"
+        color="primary-light"
+        type="button"
+        tooltipText="Clique para ir para o dia de hoje"
+        >
+      </app-generic-button>
+
       <button mat-icon-button aria-label="Semana anterior">
         <mat-icon>chevron_left</mat-icon>
       </button>

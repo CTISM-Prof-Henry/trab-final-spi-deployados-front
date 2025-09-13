@@ -4,6 +4,11 @@
   color: var(--white);
 }
 
+.btn-primary-light {
+  background-color: var(--primary-color-light);
+  color: var(--white);
+}
+
 .btn-success {
   background-color: var(--primary-color-success);
   color: var(--white);
@@ -19,7 +24,8 @@ button[mat-raised-button] {
   box-shadow: none !important;
   border-radius: 10px;
   padding: 0 24px;
-  height: 45px;
+  height: var(--btn-height, 45px);
+  padding: var(--btn-padding, 0 24px);
 
   /* Flexbox para alinhar ícone e texto */
   display: inline-flex;
