@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./auth/login/login.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 // Aqui definimos nossas rotas
 const routes: Routes = [
   // Se o usuário acessar a raiz do site (''), redirecione-o para a página de login
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: DashboardComponent },
 
   // Se o usuário acessar a URL '/login', mostre o LoginComponent
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
 
-  // No futuro, você adicionará mais rotas aqui. Ex:
+  { path: '**', redirectTo: '' }
+
+
   // { path: 'dashboard', component: DashboardComponent },
 ];
 

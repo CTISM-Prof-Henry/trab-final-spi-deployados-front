@@ -1,0 +1,53 @@
+<div class="dashboard-container">
+
+  <div class="controls-container">
+
+    <div class="filters-group">
+      <mat-form-field appearance="outline" class="filter-select">
+        <mat-label>Bloco</mat-label>
+        <mat-select value="bloco-g">
+          <mat-option value="bloco-g">Bloco G</mat-option>
+          <mat-option value="bloco-h">Bloco H</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-select">
+        <mat-label>Sala</mat-label>
+        <mat-select value="g-209">
+          <mat-option value="g-209">G-209</mat-option>
+          <mat-option value="g-210">G-210</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="actions-group">
+      <app-generic-button
+        text="Agendar"
+        color="success"
+        type="button"
+        tooltipText="Clique para agendar uma sala"
+        (buttonClick)="tentarAgendar()">
+        <mat-icon>calendar_today</mat-icon>
+      </app-generic-button>
+    </div>
+
+  </div>
+
+  <div class="calendar-nav">
+    <h2>11 – 15 de ago. de 2025</h2>
+    <div class="nav-actions">
+      <button mat-stroked-button class="today-button">hoje</button>
+      <button mat-icon-button aria-label="Semana anterior">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Próxima semana">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="calendar-placeholder">
+    O componente do calendário será implementado aqui.
+  </div>
+
+</div>

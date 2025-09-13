@@ -12,11 +12,18 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {MatOptionModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {SharedModule} from "./shared/shared.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +36,10 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatIconModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatOptionModule,
+    MatInputModule,
+    MatSelectModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
