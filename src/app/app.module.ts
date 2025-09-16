@@ -17,13 +17,16 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "./shared/shared.module";
+import { AgendamentoDialogComponent } from './agendamento-dialog/agendamento-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    AgendamentoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import {SharedModule} from "./shared/shared.module";
     MatInputModule,
     MatSelectModule,
     SharedModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

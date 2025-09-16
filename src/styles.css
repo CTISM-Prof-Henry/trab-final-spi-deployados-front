@@ -78,4 +78,9 @@ html, body {
   font-family: 'Rawline', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif !important;
 }
 
+.agendamento-dialog-panel .mat-dialog-container {
+  background-color: var(--background-color-gray); /* A cor de fundo que você quer */
+  color: var(--primary-color); /* Garante que o texto padrão seja escuro e legível */
+  border-radius: 10px;
 
+}
