@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AgendamentoService } from '../../../services/agendamento.service';
-import { AgendamentoDTO } from '../../../models/agendamento.model';
+import { AgendamentoDTO } from '../../../DTO/agendamento.dto';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
