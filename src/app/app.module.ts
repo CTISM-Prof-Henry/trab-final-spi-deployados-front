@@ -19,6 +19,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {SharedModule} from "./shared/shared.module";
 import { AgendamentoDialogComponent } from './agendamento-dialog/agendamento-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {FullCalendarModule} from "@fullcalendar/angular";
+import {CalendarioComponent} from "./shared/components/calendario/calendario.component";
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     AppComponent,
     NavbarComponent,
     DashboardComponent,
-    AgendamentoDialogComponent
+    AgendamentoDialogComponent,
   ],
   imports: [
     BrowserModule,

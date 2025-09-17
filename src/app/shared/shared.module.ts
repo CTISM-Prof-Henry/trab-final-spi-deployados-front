@@ -4,22 +4,28 @@ import { GenericButtonComponent } from './components/generic-button/generic-butt
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
+import {AppComponent} from "../app.component";
 
 
 
 @NgModule({
   declarations: [
     GenericButtonComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    CalendarioComponent,
   ],
   imports: [
     CommonModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FullCalendarModule,
   ],
   exports: [
     GenericButtonComponent,
-    CustomInputComponent
+    CustomInputComponent,
+    CalendarioComponent,
   ]
 })
 export class SharedModule { }
