@@ -1,0 +1,13 @@
+.fc {
+  font-family: Arial, sans-serif;
+}
+
+.fc-timegrid-slot {
+  height: 40px !important; /* altura das linhas da grade */
+}
+
+.fc-event {
+  border-radius: 6px !important;
+  font-size: 0.85rem;
+  padding: 2px;
+}
