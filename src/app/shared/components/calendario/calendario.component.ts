@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {
-  AgendamentoService,
-  AgendamentoDTO,
-} from '../../services/agendamento.service';
+import { AgendamentoService } from '../../../services/agendamento.service';
+import { AgendamentoDTO } from '../../../models/agendamento.model';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -20,7 +18,6 @@ export class CalendarioComponent implements OnInit {
   constructor(private agendamentoService: AgendamentoService) {}
 
   ngOnInit(): void {
-    // Inicializa o calendário
     this.calendarOptions = {
       height: 'auto',
       contentHeight: 'auto',
@@ -32,21 +29,19 @@ export class CalendarioComponent implements OnInit {
       allDaySlot: false,
       slotDuration: '00:30:00',
       nowIndicator: true,
-      headerToolbar: {
-        right: 'prev,next today',
-      },
+      headerToolbar: { right: 'prev,next today' },
       buttonText: { today: 'Hoje' },
-      events: [], // inicialmente vazio
+      events: [],
     };
 
-    // Carrega os eventos da API
+    // Carrega os eventos da API assim que o componente é inicializado
     this.agendamentoService
       .getAgendamentos()
       .subscribe((eventos: AgendamentoDTO[]) => {
         this.calendarOptions.events = eventos.map((e) => ({
-          title: e.title,
-          start: e.start,
-          end: e.end,
+          title: `${e.usuarioNome} - ${e.salaNome}`, // usuário + sala
+          start: e.dataInicio,
+          end: e.dataFim,
         }));
       });
   }

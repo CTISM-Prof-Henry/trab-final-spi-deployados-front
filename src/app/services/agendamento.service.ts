@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface AgendamentoDTO {
-  title: string;
-  start: string;
-  end: string;
-}
+import { AgendamentoDTO } from '../models/agendamento.model';
 
 @Injectable({
   providedIn: 'root',

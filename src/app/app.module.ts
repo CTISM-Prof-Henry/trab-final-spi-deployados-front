@@ -4,24 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import {RouterModule} from "@angular/router";
-import {AuthModule} from "./auth/auth.module";
+import { RouterModule } from '@angular/router';
+import { AuthModule } from './auth/auth.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import {LayoutModule} from "@angular/cdk/layout";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatIconModule} from "@angular/material/icon";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {MatOptionModule} from "@angular/material/core";
-import {MatInputModule} from "@angular/material/input";
-import {MatSelectModule} from "@angular/material/select";
-import {SharedModule} from "./shared/shared.module";
-import { AgendamentoDialogComponent } from './agendamento-dialog/agendamento-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {FullCalendarModule} from "@fullcalendar/angular";
-import {CalendarioComponent} from "./shared/components/calendario/calendario.component";
-
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { SharedModule } from './shared/shared.module';
+import { AgendamentoDialogComponent } from './shared/agendamento-dialog/agendamento-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarioComponent } from './shared/components/calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +47,6 @@ import {CalendarioComponent} from "./shared/components/calendario/calendario.com
     MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
