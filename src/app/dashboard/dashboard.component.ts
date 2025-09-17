@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {AuthService} from "../core/auth.service";
-import {MatDialog} from "@angular/material/dialog";
-import {AgendamentoDialogComponent} from "../agendamento-dialog/agendamento-dialog.component";
+import { Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AgendamentoDialogComponent } from '../shared/agendamento-dialog/agendamento-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-
   constructor(
     private authService: AuthService,
     private router: Router,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {}
 
   /**
@@ -34,13 +33,13 @@ export class DashboardComponent {
   abrirDialogAgendamento(): void {
     const dialogRef = this.dialog.open(AgendamentoDialogComponent, {
       width: '500px', // Largura do dialog
-      panelClass: 'agendamento-dialog-panel'
+      panelClass: 'agendamento-dialog-panel',
       // Você pode passar dados para o dialog aqui, se precisar
       // data: { sala: 'G-209' }
     });
 
     // Opcional: código para ser executado depois que o dialog for fechado
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('O dialog foi fechado. Resultado:', result);
       // Aqui você poderia, por exemplo, atualizar a lista de agendamentos
     });
