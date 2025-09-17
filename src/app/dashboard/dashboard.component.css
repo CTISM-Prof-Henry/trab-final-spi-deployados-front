@@ -2,7 +2,6 @@
   padding: 24px;
 }
 
-
 .controls-container {
   /* Apenas para dar um espaço abaixo antes da navegação do calendário */
   margin-bottom: 24px;
@@ -10,7 +9,7 @@
 
 .filters-group {
   display: flex; /* Coloca os filtros lado a lado */
-  gap: 16px;   /* Cria um espaço entre eles */
+  gap: 16px; /* Cria um espaço entre eles */
 }
 
 .filter-select {
@@ -22,40 +21,3 @@
   justify-content: flex-end; /* <<< A MÁGICA ACONTECE AQUI */
   margin-top: 16px; /* Adiciona um espaço entre a linha dos filtros e a linha do botão */
 }
-
-.hoje-button{
-  --btn-height: 36px;
-  --btn-padding: 0 16px;
-}
-
-.calendar-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 32px;
-  border-bottom: 1px solid var(--background-color-gray);
-  padding-bottom: 16px;
-}
-
-.calendar-nav h2 {
-  margin: 0;
-  font-family: Arial, sans-serif; /* Usando Arial aqui como exemplo */
-  color: var(--primary-color);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.calendar-placeholder {
-  margin-top: 24px;
-  padding: 48px;
-  text-align: center;
-  background-color: #fafafa;
-  border: 2px dashed var(--background-color-gray);
-  color: var(--text-color-secondary);
-  font-size: 18px;
-}
-
