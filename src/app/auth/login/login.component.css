@@ -15,7 +15,7 @@
   max-width: 400px;
   text-align: center;
 
-  h2 {
+  h1 {
     margin-bottom: 24px;
     color: var(--primary-color);
     font-size: 30px;
@@ -24,11 +24,11 @@
 
 }
 
-
 .login-form {
   display: flex;
   flex-direction: column;
-
+  gap: 20px;
+  padding-top: 20px;
 }
 
 .full-width {
@@ -49,4 +49,25 @@
 
 app-generic-button {
   width: 100%;
+}
+
+/* Novo estilo para o container dos botões */
+.form-actions {
+  display: flex;
+  justify-content: space-between; /* Ou use 'flex-end' e 'gap' se preferir */
+  gap: 16px; /* Espaçamento entre os botões */
+  margin-top: 10px; /* Espaço acima dos botões */
+}
+
+/* Garante que os botões dentro do container ocupem o espaço necessário */
+.form-actions > app-generic-button {
+  flex: 1; /* Faz com que ambos os botões tenham a mesma largura */
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
 }

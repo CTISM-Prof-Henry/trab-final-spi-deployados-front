@@ -1,20 +1,51 @@
 <div class="login-container">
   <div class="login-card">
-    <h2>LOGIN</h2>
+    <div class="login-header">
+      <h1>Acessar o Sistema</h1>
+      <p>Use suas credenciais para entrar.</p>
+    </div>
 
-    <form class="login-form">
-      <app-custom-input label="Email" placeholder="seuemail@email.com" type="email"></app-custom-input>
-      <app-custom-input label="Senha" type="password"></app-custom-input>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
 
-      <a href="#" class="forgot-password">Esqueci minha senha</a>
 
-      <app-generic-button
-        text="Login"
-        color="primary"
-        type="submit"
-        tooltipText="Clique para entrar no sistema"
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <app-custom-input
+        label="CPF"
+        placeholder="Digite seu CPF"
+        formControlName="cpf"
+        [required]="true"
+        [cpfMask]="true"
       >
-      </app-generic-button>
+      </app-custom-input>
+
+      <app-custom-input
+        label="Senha"
+        type="password"
+        placeholder="Digite sua senha"
+        formControlName="senha"
+        [required]="true">
+      </app-custom-input>
+
+      <div class="form-actions">
+        <app-generic-button
+          text="Voltar"
+          color="primary-light"
+          type="button"
+          tooltipText="Voltar para a página inicial"
+          (buttonClick)="voltar()">
+          <mat-icon>arrow_back</mat-icon>
+        </app-generic-button>
+
+        <app-generic-button
+          text="Entrar"
+          color="primary"
+          type="submit"
+          tooltipText="Clique para acessar o sistema"
+          [disabled]="loginForm.invalid"> <mat-icon>login</mat-icon>
+        </app-generic-button>
+      </div>
     </form>
   </div>
 </div>

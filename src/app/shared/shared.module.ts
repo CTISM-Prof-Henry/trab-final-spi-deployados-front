@@ -8,12 +8,14 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AppComponent } from '../app.component';
 import { HttpClientModule } from '@angular/common/http';
+import {CpfMaskDirective} from "./directive/CpfMaskDirective";
 
 @NgModule({
   declarations: [
     GenericButtonComponent,
     CustomInputComponent,
     CalendarioComponent,
+    CpfMaskDirective
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
     FullCalendarModule,
     HttpClientModule,
   ],
-  exports: [GenericButtonComponent, CustomInputComponent, CalendarioComponent],
+  exports: [
+    GenericButtonComponent,
+    CustomInputComponent,
+    CalendarioComponent,
+    CpfMaskDirective,
+  ],
 })
 export class SharedModule {}

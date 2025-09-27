@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../core/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AgendamentoDialogComponent } from '../shared/agendamento-dialog/agendamento-dialog.component';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,15 +17,14 @@ export class DashboardComponent {
   ) {}
 
   /**
-   * Este mtodo é chamado quando o botão 'Agendar' é clicado.
+   * Este metodo é chamado quando o botão 'Agendar' é clicado.
    * Ele verifica se o usuário está logado antes de prosseguir.
    */
   tentarAgendar(): void {
-    if (this.authService.isLoggedIn) {
-      // Se o usuário ESTÁ logado, prossiga com a ação de agendar.
+    console.log('Tentando agendar...');
+    if (this.authService._isLoggedIn.value) {
       this.abrirDialogAgendamento();
     } else {
-      // Se o usuário NÃO ESTÁ logado, ele é redirecionado para a página de login.
       this.router.navigate(['/login']);
     }
   }
@@ -34,8 +33,7 @@ export class DashboardComponent {
     const dialogRef = this.dialog.open(AgendamentoDialogComponent, {
       width: '500px', // Largura do dialog
       panelClass: 'agendamento-dialog-panel',
-      // Você pode passar dados para o dialog aqui, se precisar
-      // data: { sala: 'G-209' }
+
     });
 
     // Opcional: código para ser executado depois que o dialog for fechado

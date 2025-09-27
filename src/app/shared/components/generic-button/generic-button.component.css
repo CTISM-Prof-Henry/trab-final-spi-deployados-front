@@ -20,8 +20,12 @@
 }
 
 .btn-primary:hover,
-.btn-success:hover {
+.btn-success:hover, btn-backgroud-grey:hover, btn-danger:hover {
   opacity: 0.9;
+}
+
+.btn-backgroud-grey {
+  background-color: var(--background-color-gray);
 }
 
 /* Estilo base para todos os botões genéricos */
@@ -29,11 +33,11 @@ button[mat-raised-button] {
   box-shadow: none !important;
   border-radius: 10px;
   padding: 0 24px;
-  height: var(--btn-height, 45px);
+  height: var(--btn-height, 40px);
   padding: var(--btn-padding, 0 24px);
 
   /* Flexbox para alinhar ícone e texto */
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* <-- Maneira moderna de adicionar espaço */
+  gap: 8px;
 }

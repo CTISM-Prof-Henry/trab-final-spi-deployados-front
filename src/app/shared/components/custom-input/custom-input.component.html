@@ -1,4 +1,21 @@
-<div class="input-container">
-  <input [type]="type" class="custom-input" [placeholder]="placeholder">
-  <label class="custom-label">{{ label }}</label>
-</div>
+<input
+  [type]="type"
+  class="custom-input"
+  [placeholder]="placeholder"
+  [value]="value"
+  (input)="onValueChange($event)"
+  (blur)="onTouched()"
+  *ngIf="cpfMask; else normalInput"
+  appCpfMask
+>
+
+<ng-template #normalInput>
+  <input
+    [type]="type"
+    class="custom-input"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="onValueChange($event)"
+    (blur)="onTouched()"
+  >
+</ng-template>

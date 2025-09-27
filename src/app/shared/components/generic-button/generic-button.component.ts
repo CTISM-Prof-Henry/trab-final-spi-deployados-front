@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class GenericButtonComponent {
 
   @Input() text: string = 'Botão';
-  @Input() color: 'primary' | 'success' |  "primary-light" | "danger" |'warn' = 'primary' ;
+  @Input() color: 'primary' | 'success' |  "primary-light" | "background-gray" | "danger" |'warn' = 'primary' ;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() disabled: boolean = false;
   @Input() tooltipText: string = '';
@@ -22,3 +22,4 @@ export class GenericButtonComponent {
   }
 
 }
+
