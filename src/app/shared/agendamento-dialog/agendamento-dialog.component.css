@@ -6,7 +6,6 @@
 .form-row {
   display: flex;
   gap: 16px; /* Espaço entre os campos na mesma linha */
-
 }
 
 .form-field {
@@ -19,7 +18,7 @@
   margin-bottom: 10px;
 }
 
-.dialog-container{
+.dialog-container {
   background-color: var(--background-color-gray);
 }
 
@@ -32,7 +31,9 @@ h2[mat-dialog-title] {
 .dialog-subtitle {
   text-align: center; /* Centraliza o texto (para combinar com o título) */
   font-size: 14px; /* Tamanho da fonte (ajuste como preferir) */
-  color: var(--primary-color); /* Cor do texto (um cinza sutil das suas variáveis) */
+  color: var(
+    --primary-color
+  ); /* Cor do texto (um cinza sutil das suas variáveis) */
   font-weight: 400; /* Peso da fonte (400 é normal, 500 é semi-negrito) */
   margin-top: -10px; /* Reduz o espaço entre o título e o subtítulo */
   margin-bottom: 24px; /* Aumenta o espaço entre o subtítulo e o formulário */

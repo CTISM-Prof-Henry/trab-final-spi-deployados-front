@@ -1,30 +1,43 @@
-
 <h2 mat-dialog-title>Novo Agendamento</h2>
 
-<p class="dialog-subtitle">Preencha as informações abaixo para agendar a sala.</p>
+<p class="dialog-subtitle">
+  Preencha as informações abaixo para agendar a sala.
+</p>
 
 <div mat-dialog-content class="dialog-content">
-
   <div class="form-row">
-    <app-custom-input label="Data Início" type="date" class="form-field"></app-custom-input>
-    <app-custom-input label="Horário" type="time" class="form-field"></app-custom-input>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Data Início</mat-label>
+      <input matInput type="date" [(ngModel)]="dataInicio" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Horário Início</mat-label>
+      <input matInput type="time" [(ngModel)]="horaInicio" />
+    </mat-form-field>
   </div>
 
   <div class="form-row">
-    <app-custom-input label="Data Fim" type="date" class="form-field"></app-custom-input>
-    <app-custom-input label="Horário" type="time" class="form-field"></app-custom-input>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Data Fim</mat-label>
+      <input matInput type="date" [(ngModel)]="dataFim" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Horário Fim</mat-label>
+      <input matInput type="time" [(ngModel)]="horaFim" />
+    </mat-form-field>
   </div>
 </div>
 
 <div mat-dialog-actions align="end">
-  <app-generic-button
-    text="Cancelar"
-    color="danger"
-    mat-dialog-close> </app-generic-button>
+  <app-generic-button text="Cancelar" color="danger" mat-dialog-close>
+  </app-generic-button>
 
   <app-generic-button
     text="Confirmar Agendamento"
-    color="success">
+    color="success"
+    (buttonClick)="confirmarAgendamento()"
+  >
   </app-generic-button>
 </div>
-

@@ -14,4 +14,12 @@ export class AgendamentoService {
   getAgendamentos(): Observable<AgendamentoDTO[]> {
     return this.http.get<AgendamentoDTO[]>(this.apiUrl);
   }
+
+  getAgendamentosPorSala(salaId: number): Observable<AgendamentoDTO[]> {
+    return this.http.get<AgendamentoDTO[]>(`${this.apiUrl}/sala/${salaId}`);
+  }
+
+  criarAgendamento(agendamento: AgendamentoDTO): Observable<AgendamentoDTO> {
+    return this.http.post<AgendamentoDTO>(this.apiUrl, agendamento);
+  }
 }
