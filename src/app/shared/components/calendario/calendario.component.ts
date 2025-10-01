@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewEncapsulation,
+} from '@angular/core';
 import { AgendamentoService } from '../../../services/agendamento.service';
 import { AgendamentoDTO } from '../../../DTO/agendamento.dto';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -12,12 +19,27 @@ import ptBr from '@fullcalendar/core/locales/pt-br';
   styleUrls: ['./calendario.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CalendarioComponent implements OnInit {
+export class CalendarioComponent implements OnInit, OnChanges {
+  @Input() salaSelecionadaId!: number; // recebe o id da sala do Dashboard
   calendarOptions: any;
 
   constructor(private agendamentoService: AgendamentoService) {}
 
   ngOnInit(): void {
+    this.inicializarCalendario();
+    if (this.salaSelecionadaId) {
+      this.carregarAgendamentos();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['salaSelecionadaId'] && this.salaSelecionadaId) {
+      console.log('Sala selecionada no Calendario:', this.salaSelecionadaId);
+      this.carregarAgendamentos();
+    }
+  }
+
+  inicializarCalendario() {
     this.calendarOptions = {
       height: 'auto',
       contentHeight: 'auto',
@@ -33,16 +55,26 @@ export class CalendarioComponent implements OnInit {
       buttonText: { today: 'Hoje' },
       events: [],
     };
+  }
 
-    // Carrega os eventos da API assim que o componente é inicializado
+  carregarAgendamentos() {
+    console.log('Carregando agendamentos para a sala:', this.salaSelecionadaId);
+
     this.agendamentoService
-      .getAgendamentos()
+      .getAgendamentosPorSala(this.salaSelecionadaId)
       .subscribe((eventos: AgendamentoDTO[]) => {
-        this.calendarOptions.events = eventos.map((e) => ({
-          title: `${e.usuarioNome} - ${e.salaNome}`, // usuário + sala
-          start: e.dataInicio,
-          end: e.dataFim,
+        const eventosCalendario = eventos.map((e) => ({
+          title: `${e.usuarioNome} - ${e.salaNome}`,
+          start: new Date(e.dataInicio),
+          end: new Date(e.dataFim),
         }));
+
+        console.log(
+          'Eventos transformados para o calendário:',
+          eventosCalendario
+        );
+
+        this.calendarOptions.events = eventosCalendario;
       });
   }
 }
