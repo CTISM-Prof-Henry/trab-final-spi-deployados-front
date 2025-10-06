@@ -10,31 +10,49 @@
   <span class="navbar-spacer"></span>
 
   <div class="navbar-actions">
+    <!-- Bloco para usuários LOGADOS -->
     <ng-container *ngIf="isLoggedIn">
 
-      <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-button"  matTooltip="Opções do usuário">
+      <button
+        mat-button
+        [matMenuTriggerFor]="userMenu"
+        class="user-menu-button"
+        matTooltip="Opções do usuário">
         <mat-icon>person</mat-icon>
         <span>{{ currentUser?.nome }}</span>
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
+
       <mat-menu #userMenu="matMenu">
-        <button mat-menu-item (click)="logout()" matTooltip="Deslogar e sair do sistema">
+        <div class="user-menu-header">
+          <h3>{{ currentUser?.nome }}</h3>
+          <p>{{ userRole }}</p>
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="meusAgendamentos()">
+          <mat-icon>event_note</mat-icon>
+          <span>Meus Agendamentos</span>
+        </button>
+        <button *ngIf="authService.isAdmin()" mat-menu-item (click)="gerenciarSalas()">
+          <mat-icon>domain_add</mat-icon>
+          <span>Gerenciar Salas</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>Sair</span>
         </button>
-        <button mat-button class="action-button" matTooltip="Ver meus agendamentos">Meus Agendamentos</button>
       </mat-menu>
     </ng-container>
 
+    <!-- Bloco para usuários NÃO LOGADOS -->
     <ng-container *ngIf="!isLoggedIn">
-
       <app-generic-button
-        (click)="login()"
         text="Entrar"
-        color="background-gray"
-        type="submit"
+        color="primary"
+        type="button"
         tooltipText="Clique para acessar o sistema"
-        > <mat-icon>login</mat-icon>
+        (buttonClick)="login()">
+        <mat-icon>login</mat-icon>
       </app-generic-button>
     </ng-container>
   </div>

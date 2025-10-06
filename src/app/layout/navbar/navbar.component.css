@@ -71,3 +71,24 @@
      align-items: center;
      gap: 8px;
    }
+
+
+/* Estilos customizados para o painel do menu de usuário */
+.user-menu-panel {
+  padding: 0 !important;
+  max-width: 320px !important;
+  border-radius: 8px !important;
+}
+
+.user-menu-header {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.user-menu-header h3 { margin: 0; font-size: 1rem; font-weight: 500; color: #333; }
+.user-menu-header p { margin: 4px 0 0; font-size: 0.875rem; color: #666; }
+
+.user-menu-panel .mat-mdc-menu-item .mat-icon {
+  margin-right: 16px;
+}

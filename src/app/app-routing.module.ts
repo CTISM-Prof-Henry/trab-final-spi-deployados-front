@@ -3,19 +3,28 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./auth/login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {NotFoundComponentComponent} from "./shared/components/not-found-component/not-found-component.component";
+import {GerenciarSalasComponent} from "./admin/gerenciar-salas/gerenciar-salas.component";
+import {AdminGuard} from "./guards/AdminGuard";
 
-// Aqui definimos nossas rotas
 const routes: Routes = [
-  // Se o usuário acessar a raiz do site (''), redirecione-o para a página de login
   { path: '', component: DashboardComponent },
 
-  // Se o usuário acessar a URL '/login', mostre o LoginComponent
   { path: 'login', component: LoginComponent },
 
-  { path: '**', redirectTo: '' }
+  {
+    path: 'admin/salas',
+    component: GerenciarSalasComponent,
+    canActivate: [AdminGuard]
+  },
 
+  // {
+  //   path: '/meus-agendamentos',
+  //   //component: MeusAgendamentos    (criar)
+  // },
 
-  // { path: 'dashboard', component: DashboardComponent },
+  { path: '**', component: NotFoundComponentComponent }
+
 ];
 
 

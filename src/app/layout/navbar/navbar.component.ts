@@ -11,23 +11,42 @@ import {Router} from "@angular/router";
 export class NavbarComponent implements OnInit {
 
   isLoggedIn = false;
-  currentUser: UserData | null = null; // A propriedade que estava faltando
+  currentUser: UserData | null = null;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    // Escuta as alterações de login
     this.authService.isLoggedIn$.subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
       this.currentUser = this.authService.getCurrentUser();
     });
   }
 
-  logout(): void {
-    this.authService.logout();
+  get userRole(): string {
+    const tipo = this.currentUser?.tipoUsuario;
+    switch (tipo) {
+      case 1: return 'Administrador';
+      case 2: return 'Professor / Servidor';
+      case 3: return 'Aluno';
+      default: return 'Usuário';
+    }
   }
 
   login(): void {
     this.router.navigate(['/login']);
+  }
+
+  // Navega para a página de gerenciamento de salas (a ser criada)
+  gerenciarSalas(): void {
+    this.router.navigate(['/admin/salas']);
+  }
+
+  // Navega para a página de agendamentos do usuário (a ser criada)
+  meusAgendamentos(): void {
+    this.router.navigate(['/meus-agendamentos']);
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }

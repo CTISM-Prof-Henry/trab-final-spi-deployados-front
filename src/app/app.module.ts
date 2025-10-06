@@ -19,9 +19,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
+import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, AgendamentoDialogComponent],
+  declarations: [AppComponent, DashboardComponent, AgendamentoDialogComponent, GerenciarSalasComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -42,6 +44,7 @@ import { FormsModule } from '@angular/forms';
     LayoutModule,
     LayoutModule,
     FormsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

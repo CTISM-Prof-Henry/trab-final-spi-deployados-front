@@ -9,21 +9,25 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { AppComponent } from '../app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {CpfMaskDirective} from "./directive/CpfMaskDirective";
+import { NotFoundComponentComponent } from './components/not-found-component/not-found-component.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     GenericButtonComponent,
     CustomInputComponent,
     CalendarioComponent,
-    CpfMaskDirective
+    CpfMaskDirective,
+    NotFoundComponentComponent
   ],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatTooltipModule,
-    FullCalendarModule,
-    HttpClientModule,
-  ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatTooltipModule,
+        FullCalendarModule,
+        HttpClientModule,
+        MatIconModule,
+    ],
   exports: [
     GenericButtonComponent,
     CustomInputComponent,

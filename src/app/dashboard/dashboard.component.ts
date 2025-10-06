@@ -17,13 +17,25 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private salaService: SalaService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const usuario = this.authService.getCurrentUser();
     console.log('ID do usuário logado:', usuario?.idUsuario);
     this.carregarSalas();
+  }
+
+  tentarAgendar(): void {
+    // Acessa o valor atual do estado de login
+    if (this.authService._isLoggedIn.value) {
+      // Se o usuário ESTÁ logado, abre o modal de agendamento.
+      this.abrirDialogAgendamento();
+    } else {
+      // Se o usuário NÃO ESTÁ logado, ele é redirecionado para a página de login.
+      this.router.navigate(['/login']);
+    }
   }
 
   carregarSalas(): void {

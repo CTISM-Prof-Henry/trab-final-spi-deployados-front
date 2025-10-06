@@ -84,3 +84,27 @@ html, body {
   border-radius: 10px;
 
 }
+
+
+/* Estilo para a notificação de erro do snackbar */
+.error-snackbar {
+  background-color: var(--error-color); /* Cor vermelha do Material Design */
+  color: white; /* Texto branco */
+}
+
+.error-snackbar .mat-simple-snackbar-action button {
+  /* Aparência do botão */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  margin-left: 16px; /* Espaço entre a mensagem e o botão */
+  color: white; /* Cor do texto do botão */
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out; /* Efeito suave de transição */
+  align-items: center;
+}
+
+/* Efeito ao passar o mouse por cima do botão */
+.error-snackbar .mat-simple-snackbar-action button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
