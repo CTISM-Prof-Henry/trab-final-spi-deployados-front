@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AgendamentoDTO } from 'src/app/DTO/agendamento.dto';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -22,7 +23,8 @@ export class AgendamentoDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, // data.sala vem do dashboard
     private dialogRef: MatDialogRef<AgendamentoDialogComponent>,
     private agendamentoService: AgendamentoService,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +62,14 @@ export class AgendamentoDialogComponent implements OnInit {
         console.log('Agendamento criado com sucesso', res);
         this.dialogRef.close(true);
       },
-      error: (err) => console.error('Erro ao criar agendamento', err),
+      error: (err) => {
+        if (err.status === 400) {
+          // Conflito de horário
+          this.snackBar.open('Horário já reservado. Escolha outro.', 'Fechar', {
+            duration: 4000,
+          });
+        }
+      },
     });
   }
 }
