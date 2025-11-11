@@ -58,4 +58,18 @@ export class AuthService {
     const user = this.getCurrentUser();
     return user ? user.tipoUsuario === 1 : false;
   }
+
+  getCurrentUserId(): number | null {
+    const u = this.getCurrentUser();
+
+    // Se não encontrar no localStorage, tenta pedir pro backend
+    if (!u) {
+      // fazer chamada para o backend que retorna o usuário autenticado
+      // exemplo: GET /usuario/me
+      return null;
+    }
+    return u.idUsuario ?? u.id ?? null;
+  }
+
+
 }

@@ -21,9 +21,10 @@ import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
 import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, AgendamentoDialogComponent, GerenciarSalasComponent],
+  declarations: [AppComponent, DashboardComponent, AgendamentoDialogComponent, GerenciarSalasComponent, MeusAgendamentosComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

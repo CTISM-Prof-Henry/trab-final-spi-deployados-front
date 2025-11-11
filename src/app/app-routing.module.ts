@@ -6,6 +6,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {NotFoundComponentComponent} from "./shared/components/not-found-component/not-found-component.component";
 import {GerenciarSalasComponent} from "./admin/gerenciar-salas/gerenciar-salas.component";
 import {AdminGuard} from "./guards/AdminGuard";
+import {MeusAgendamentosComponent} from "./meus-agendamentos/meus-agendamentos.component";
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -18,10 +19,10 @@ const routes: Routes = [
     canActivate: [AdminGuard]
   },
 
-  // {
-  //   path: '/meus-agendamentos',
-  //   //component: MeusAgendamentos    (criar)
-  // },
+  {
+    path: 'meus-agendamentos',
+    component: MeusAgendamentosComponent,
+   },
 
   { path: '**', component: NotFoundComponentComponent }
 

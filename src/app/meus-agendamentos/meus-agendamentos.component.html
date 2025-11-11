@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="header">
+    <app-generic-button
+      text="&larr; Voltar ao Dashboard"
+      color="primary-light"
+      (buttonClick)="voltarAoDashboard()">
+    </app-generic-button>
+    <h1>{{ mostrandoHistorico ? 'Histórico de Agendamentos' : 'Meus Agendamentos' }}</h1>
+
+    <button class="toggle-button" (click)="toggleVisao()" [disabled]="isLoading">
+      {{ mostrandoHistorico ? 'Ver Agendamentos' : 'Ver Histórico' }}
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    <p>Carregando agendamentos...</p>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div *ngIf="agendamentosExibidos.length > 0; else semAgendamentos" class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>Sala</th>
+          <th>Data de Início</th>
+          <th>Data de Fim</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ag of agendamentosExibidos">
+          <td>{{ ag.salaNome }}</td>
+          <td>{{ ag.dataInicio | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ ag.dataFim | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td><span class="status">{{ ag.status }}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #semAgendamentos>
+      <p *ngIf="!mostrandoHistorico">Você não possui agendamentos futuros.</p>
+      <p *ngIf="mostrandoHistorico">Nenhum agendamento encontrado no seu histórico.</p>
+    </ng-template>
+  </div>
+</div>
