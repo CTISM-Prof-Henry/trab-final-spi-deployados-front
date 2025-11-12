@@ -53,6 +53,6 @@ export class LoginComponent implements OnInit {
 
 
   voltar(): void {
-    this.router.navigate(['/']); // Navega para a rota raiz (seu dashboard)
+    this.router.navigate(['/']);
   }
 }

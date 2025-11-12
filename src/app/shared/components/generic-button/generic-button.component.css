@@ -1,4 +1,4 @@
-/* Estilos para as variações de cor do botão */
+
 .btn-primary {
   background-color: var(--primary-color);
   color: var(--white);
@@ -28,7 +28,7 @@
   background-color: var(--background-color-gray);
 }
 
-/* Estilo base para todos os botões genéricos */
+
 button[mat-raised-button] {
   box-shadow: none !important;
   border-radius: 10px;
@@ -36,7 +36,7 @@ button[mat-raised-button] {
   height: var(--btn-height, 40px);
   padding: var(--btn-padding, 0 24px);
 
-  /* Flexbox para alinhar ícone e texto */
+
   display: inline-flex;
   align-items: center;
   gap: 8px;

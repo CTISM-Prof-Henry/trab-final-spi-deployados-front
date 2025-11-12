@@ -36,12 +36,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  // Navega para a página de gerenciamento de salas (a ser criada)
+
   gerenciarSalas(): void {
     this.router.navigate(['/admin/salas']);
   }
 
-  // Navega para a página de agendamentos do usuário (a ser criada)
+
   meusAgendamentos(): void {
     this.router.navigate(['/meus-agendamentos']);
   }

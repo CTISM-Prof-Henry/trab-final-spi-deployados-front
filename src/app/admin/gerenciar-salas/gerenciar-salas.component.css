@@ -1,6 +1,4 @@
-/* src/app/admin/gerenciar-salas/gerenciar-salas.component.css */
 
-/* Container Principal */
 .container-gerenciamento {
   display: flex;
   flex-direction: column;
@@ -17,7 +15,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Formulário */
+
 .form-container h2, .table-container h2 {
   margin-top: 0;
   border-bottom: 2px solid #f0f0f0;
@@ -84,7 +82,7 @@
   font-weight: 600;
 }
 
-/* Botões do Formulário */
+
 .button-group {
   display: flex;
   gap: 1rem;
@@ -113,7 +111,7 @@
 }
 .btn-secondary:disabled { background-color: #c8cbcf; }
 
-/* Tabela */
+
 .table-container {
   overflow-x: auto;
 }
@@ -134,12 +132,12 @@ th {
   color: #444;
 }
 
-/* Estilo para salas inativas (pode remover se não quiser) */
+
 .tr-inativa {
   background-color: #fafafa;
   color: #999;
 }
-.tr-inativa td:not(:last-child) { /* Não risca os botões */
+.tr-inativa td:not(:last-child) {
   text-decoration: line-through;
 }
 
@@ -153,7 +151,7 @@ th {
 .status-ativo { background-color: #d4edda; color: #155724; }
 .status-inativo { background-color: #f8d7da; color: #721c24; }
 
-/* Botões de Ação da Tabela */
+
 .action-buttons {
   display: flex;
   gap: 0.5rem;
@@ -174,7 +172,7 @@ th {
 .btn-activate { color: #28a745; }
 .btn-deactivate { color: #ffc107; }
 
-/* Estados */
+
 .loading, .no-data {
   text-align: center;
   padding: 2rem;

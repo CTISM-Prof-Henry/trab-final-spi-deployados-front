@@ -20,7 +20,7 @@ import ptBr from '@fullcalendar/core/locales/pt-br';
   encapsulation: ViewEncapsulation.None,
 })
 export class CalendarioComponent implements OnInit, OnChanges {
-  @Input() salaSelecionadaId!: number; // recebe o id da sala do Dashboard
+  @Input() salaSelecionadaId!: number;
   calendarOptions: any;
 
   constructor(private agendamentoService: AgendamentoService) {}

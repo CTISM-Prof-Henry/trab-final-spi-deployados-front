@@ -3,21 +3,21 @@
 }
 
 .controls-container {
-  /* Apenas para dar um espaço abaixo antes da navegação do calendário */
+
   margin-bottom: 24px;
 }
 
 .filters-group {
-  display: flex; /* Coloca os filtros lado a lado */
-  gap: 16px; /* Cria um espaço entre eles */
+  display: flex;
+  gap: 16px;
 }
 
 .filter-select {
-  flex-grow: 1; /* Faz com que os campos de filtro cresçam e ocupem todo o espaço disponível na linha */
+  flex-grow: 1;
 }
 
 .actions-group {
   display: flex;
-  justify-content: flex-end; /* <<< A MÁGICA ACONTECE AQUI */
-  margin-top: 16px; /* Adiciona um espaço entre a linha dos filtros e a linha do botão */
+  justify-content: flex-end;
+  margin-top: 16px;
 }

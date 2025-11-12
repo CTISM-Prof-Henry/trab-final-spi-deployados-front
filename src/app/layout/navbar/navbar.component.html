@@ -10,7 +10,7 @@
   <span class="navbar-spacer"></span>
 
   <div class="navbar-actions">
-    <!-- Bloco para usuários LOGADOS -->
+
     <ng-container *ngIf="isLoggedIn">
 
       <button
@@ -44,7 +44,7 @@
       </mat-menu>
     </ng-container>
 
-    <!-- Bloco para usuários NÃO LOGADOS -->
+
     <ng-container *ngIf="!isLoggedIn">
       <app-generic-button
         text="Entrar"

@@ -2,51 +2,51 @@
    CALENDÁRIO - FULLCALENDAR
    ========================== */
 
-/* Fundo do calendário */
+
 .fc {
   font-family: "Rawline", Arial, sans-serif;
-  background-color: var(--background-color-light); /* cinza claro */
+  background-color: var(--background-color-light);
   padding: 10px;
   border-radius: 8px;
 }
 
-/* Título da semana */
+
 .fc-toolbar-title {
   font-weight: 700 !important;
   font-size: 1.3rem;
 }
 
-/* Botão Hoje */
+
 .fc .fc-toolbar .fc-button.fc-today {
-  background-color: var(--primary-color-light) !important; /* azul claro */
+  background-color: var(--primary-color-light) !important;
   color: white !important;
   border-radius: 6px !important;
   font-weight: 600 !important;
   border: none !important;
 }
 
-/* Botões de navegação (setas) */
+
 .fc .fc-toolbar .fc-button:not(.fc-today) {
   background-color: transparent !important;
-  color: var(--primary-color) !important; /* azul escuro */
+  color: var(--primary-color) !important;
   border: none !important;
   font-weight: 600 !important;
 }
 
-/* Hover nos botões */
+
 .fc .fc-toolbar .fc-button:hover {
   opacity: 0.9 !important;
   cursor: pointer !important;
 }
 
-/* Linhas da grade de horários */
+
 .fc-timegrid-slot,
 .fc-timegrid-slot-lane .fc-scrollgrid-sync-inner {
   height: 20px !important;
   min-height: 20px !important;
 }
 
-/* Remove placeholder e linhas extras do TimeGrid */
+
 .fc-timegrid-slot-minor,
 .fc-timegrid-slot-minor .fc-scrollgrid-sync-inner,
 .fc-scrollgrid,
@@ -57,12 +57,12 @@
   margin: 0 !important;
 }
 
-/* Remove espaço do último slot */
+
 .fc-timegrid-event-harness {
   background: transparent !important;
 }
 
-/* Eventos */
+
 .fc-event {
   border-radius: 6px !important;
   font-size: 0.8rem;
@@ -70,24 +70,24 @@
   line-height: 1.1;
 }
 
-/* Hover nos eventos */
+
 .fc-event:hover {
   opacity: 0.9;
   cursor: pointer;
 }
 
-/* Dias da semana */
+
 .fc-col-header-cell-cushion {
   font-weight: 600;
   color: var(--primary-color-grey);
 }
 
-/* Remove scroll interno do timeGrid */
+
 .fc-timegrid-body {
   overflow-y: hidden !important;
 }
 
-/* Placeholder invisível */
+
 .fc-timegrid-slot-minor {
   background-color: transparent !important;
   border: none !important;
@@ -95,11 +95,11 @@
 
 .fc-col-header-cell-cushion {
   font-weight: 600;
-  color: var(--primary-color-grey); /* mantém o texto cinza */
+  color: var(--primary-color-grey);
 }
 
 .fc-col-header-cell {
-  background-color: white !important; /* muda para branco */
-  border-radius: 6px 6px 0 0; /* cantos arredondados no topo */
-  border-bottom: 1px solid #ddd; /* separa do restante do calendário */
+  background-color: white !important;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid #ddd;
 }
