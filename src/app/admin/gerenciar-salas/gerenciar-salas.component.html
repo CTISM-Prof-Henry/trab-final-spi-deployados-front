@@ -1,5 +1,122 @@
-<div style="padding: 2rem;">
-  <h1>Gerenciamento de Salas</h1>
-  <p>Esta página só pode ser acessada por administradores.</p>
-  <!-- futuramente, aqui entrará sua tabela de salas, formulários, etc. -->
+<div class="container-gerenciamento">
+
+  <!-- 1. Formulário de Cadastro / Edição -->
+  <div class="form-container card">
+    <h2>{{ isEditMode ? 'Editar Sala' : 'Cadastrar Nova Sala' }}</h2>
+
+    <form [formGroup]="salaForm" (ngSubmit)="onSubmit()">
+
+      <!-- Linha 1: Nome e Tipo -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nomeSala">Nome da Sala</label>
+          <input id="nomeSala" type="text" formControlName="nomeSala">
+          <div *ngIf="salaForm.get('nomeSala')?.touched && salaForm.get('nomeSala')?.invalid" class="validation-error">
+            Nome é obrigatório (mín. 3 caracteres).
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tipoSala">Tipo</label>
+          <input id="tipoSala" type="text" formControlName="tipoSala">
+          <div *ngIf="salaForm.get('tipoSala')?.touched && salaForm.get('tipoSala')?.invalid" class="validation-error">
+            Tipo é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha 2: Prédio e Complemento -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="predio">Prédio</label>
+          <input id="predio" type="text" formControlName="predio">
+          <div *ngIf="salaForm.get('predio')?.touched && salaForm.get('predio')?.invalid" class="validation-error">
+            Prédio é obrigatório.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="complemento">Complemento (Ex: Bloco A, 2º Andar)</label>
+          <input id="complemento" type="text" formControlName="complemento">
+        </div>
+      </div>
+
+      <!-- Linha 3: Capacidade e Ativo -->
+      <div class="form-row">
+        <div class="form-group-small">
+          <label for="capacidade">Capacidade</label>
+          <input id="capacidade" type="number" formControlName="capacidade">
+          <div *ngIf="salaForm.get('capacidade')?.touched && salaForm.get('capacidade')?.invalid" class="validation-error">
+            Capacidade deve ser 1 ou mais.
+          </div>
+        </div>
+        <div class="form-group-check">
+          <input id="ativo" type="checkbox" formControlName="ativo">
+          <label for="ativo">Sala Ativa</label>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary" [disabled]="salaForm.invalid || isLoading">
+          {{ isEditMode ? 'Atualizar Sala' : 'Salvar Nova Sala' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()" [disabled]="isLoading">
+          Cancelar
+        </button>
+      </div>
+
+      <!-- Mensagem de Erro Global -->
+      <div *ngIf="error" class="error-message">
+        {{ error }}
+      </div>
+    </form>
+  </div>
+
+  <!-- 2. Tabela de Salas Existentes -->
+  <div class="table-container card">
+    <h2>Salas Cadastradas</h2>
+
+    <div *ngIf="isLoading && salas.length === 0" class="loading">
+      Carregando salas...
+    </div>
+
+    <div *ngIf="!isLoading && salas.length === 0" class="no-data">
+      Nenhuma sala cadastrada ainda.
+    </div>
+
+    <table *ngIf="salas.length > 0">
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Prédio</th>
+        <th>Capac.</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sala of salas" [class.tr-inativa]="!sala.ativo">
+        <td>{{ sala.nomeSala }}</td>
+        <td>{{ sala.tipoSala }}</td>
+        <td>{{ sala.predio }}</td>
+        <td>{{ sala.capacidade }}</td>
+        <td>
+          <span [class]="sala.ativo ? 'status status-ativo' : 'status status-inativo'">
+            {{ sala.ativo ? 'Ativa' : 'Inativa' }}
+          </span>
+        </td>
+        <td class="action-buttons">
+          <button class="btn-icon btn-edit" (click)="onEditClick(sala)" title="Editar">
+            &#9998; <!-- Lápis -->
+          </button>
+          <!-- REMOVIDOS os botões de ativar/desativar -->
+          <button class="btn-icon btn-delete" (click)="onDeleteClick(sala.idSala!)" title="Deletar">
+            &#128465; <!-- Lixeira -->
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>

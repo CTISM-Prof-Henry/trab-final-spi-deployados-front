@@ -1,3 +1,5 @@
+// src/app/services/auth.service.ts
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
@@ -11,9 +13,7 @@ import {UserData} from "../DTO/login.dto";
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/usuario';
-  // chave para salvar os dados no localStorage
   private readonly USER_KEY = 'currentUser';
-  // behaviorSubject  inicia com base no que está salvo no localStorage
   _isLoggedIn = new BehaviorSubject<boolean>(this.hasToken());
   public isLoggedIn$ = this._isLoggedIn.asObservable();
 
@@ -27,12 +27,14 @@ export class AuthService {
   }
 
   login(credentials: { cpf: string, senha: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
+
+    // === A CORREÇÃO CRÍTICA ESTÁ AQUI ===
+    // Isto diz ao navegador: "Por favor, ACEITE e guarde o cookie JSESSIONID que o backend enviar"
+    return this.http.post<any>(`${this.apiUrl}/login`, credentials, { withCredentials: true }).pipe(
       tap(response => {
+        // O localStorage continua sendo usado pelo frontend
         localStorage.setItem(this.USER_KEY, JSON.stringify(response));
-
         this._isLoggedIn.next(true);
-
         this.router.navigate(['/']);
       }),
       catchError(error => {
@@ -61,15 +63,10 @@ export class AuthService {
 
   getCurrentUserId(): number | null {
     const u = this.getCurrentUser();
-
-    // Se não encontrar no localStorage, tenta pedir pro backend
     if (!u) {
-      // fazer chamada para o backend que retorna o usuário autenticado
-      // exemplo: GET /usuario/me
       return null;
     }
-    return u.idUsuario ?? u.id ?? null;
+    // Seu backend retorna "idUsuario", então vamos usar isso.
+    return u.idUsuario ?? null;
   }
-
-
 }

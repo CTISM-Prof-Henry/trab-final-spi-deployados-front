@@ -22,10 +22,14 @@ import { FormsModule } from '@angular/forms';
 import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { WithCredentialsInterceptor} from "./core/WithCredentialsInterceptor";
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, AgendamentoDialogComponent, GerenciarSalasComponent, MeusAgendamentosComponent],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -46,8 +50,11 @@ import { MeusAgendamentosComponent } from './meus-agendamentos/meus-agendamentos
     LayoutModule,
     FormsModule,
     MatSnackBarModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WithCredentialsInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
