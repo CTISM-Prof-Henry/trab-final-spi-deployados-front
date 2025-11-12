@@ -1,12 +1,12 @@
 <div class="container-gerenciamento">
 
-  <!-- 1. Formulário de Cadastro / Edição -->
+
   <div class="form-container card">
     <h2>{{ isEditMode ? 'Editar Sala' : 'Cadastrar Nova Sala' }}</h2>
 
     <form [formGroup]="salaForm" (ngSubmit)="onSubmit()">
 
-      <!-- Linha 1: Nome e Tipo -->
+
       <div class="form-row">
         <div class="form-group">
           <label for="nomeSala">Nome da Sala</label>
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <!-- Linha 2: Prédio e Complemento -->
+
       <div class="form-row">
         <div class="form-group">
           <label for="predio">Prédio</label>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <!-- Linha 3: Capacidade e Ativo -->
+
       <div class="form-row">
         <div class="form-group-small">
           <label for="capacidade">Capacidade</label>
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <!-- Botões -->
+
       <div class="button-group">
         <button type="submit" class="btn btn-primary" [disabled]="salaForm.invalid || isLoading">
           {{ isEditMode ? 'Atualizar Sala' : 'Salvar Nova Sala' }}
@@ -64,14 +64,14 @@
         </button>
       </div>
 
-      <!-- Mensagem de Erro Global -->
+
       <div *ngIf="error" class="error-message">
         {{ error }}
       </div>
     </form>
   </div>
 
-  <!-- 2. Tabela de Salas Existentes -->
+
   <div class="table-container card">
     <h2>Salas Cadastradas</h2>
 
@@ -107,11 +107,11 @@
         </td>
         <td class="action-buttons">
           <button class="btn-icon btn-edit" (click)="onEditClick(sala)" title="Editar">
-            &#9998; <!-- Lápis -->
+            &#9998;
           </button>
-          <!-- REMOVIDOS os botões de ativar/desativar -->
+
           <button class="btn-icon btn-delete" (click)="onDeleteClick(sala.idSala!)" title="Deletar">
-            &#128465; <!-- Lixeira -->
+            X
           </button>
         </td>
       </tr>

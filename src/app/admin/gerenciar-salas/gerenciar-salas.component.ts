@@ -62,7 +62,7 @@ export class GerenciarSalasComponent implements OnInit {
     const salaDTO: SalaDTO = this.salaForm.value;
 
     if (this.isEditMode && this.salaSelecionadaId) {
-      // Atualizar (inclui mudança do campo "ativo" via checkbox)
+
       this.salaService.atualizar(this.salaSelecionadaId, salaDTO).subscribe({
         next: () => {
           this.carregarSalas();
@@ -71,7 +71,7 @@ export class GerenciarSalasComponent implements OnInit {
         error: (err: any) => this.handleError(err, 'atualizar')
       });
     } else {
-      // Criar
+
       this.salaService.criar(salaDTO).subscribe({
         next: () => {
           this.carregarSalas();

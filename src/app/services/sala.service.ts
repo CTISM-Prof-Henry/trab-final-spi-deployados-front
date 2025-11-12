@@ -7,7 +7,7 @@ import { SalaDTO } from '../DTO/sala.dto';
   providedIn: 'root',
 })
 export class SalaService {
-  private apiUrl = 'http://localhost:8080/salas'; // endpoint do backend
+  private apiUrl = 'http://localhost:8080/salas';
 
   constructor(private http: HttpClient) {}
 

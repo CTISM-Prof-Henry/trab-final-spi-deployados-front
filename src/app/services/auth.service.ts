@@ -28,11 +28,10 @@ export class AuthService {
 
   login(credentials: { cpf: string, senha: string }): Observable<any> {
 
-    // === A CORREÇÃO CRÍTICA ESTÁ AQUI ===
-    // Isto diz ao navegador: "Por favor, ACEITE e guarde o cookie JSESSIONID que o backend enviar"
+
     return this.http.post<any>(`${this.apiUrl}/login`, credentials, { withCredentials: true }).pipe(
       tap(response => {
-        // O localStorage continua sendo usado pelo frontend
+
         localStorage.setItem(this.USER_KEY, JSON.stringify(response));
         this._isLoggedIn.next(true);
         this.router.navigate(['/']);
@@ -66,7 +65,7 @@ export class AuthService {
     if (!u) {
       return null;
     }
-    // Seu backend retorna "idUsuario", então vamos usar isso.
+
     return u.idUsuario ?? null;
   }
 }

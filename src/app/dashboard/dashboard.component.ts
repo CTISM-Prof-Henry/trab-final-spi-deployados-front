@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   }
 
   tentarAgendar(): void {
-    // Acessa o valor atual do estado de login
+
     if (this.authService._isLoggedIn.value) {
       // Se o usuário ESTÁ logado, abre o modal de agendamento.
       this.abrirDialogAgendamento();
@@ -70,6 +70,12 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('O dialog foi fechado. Resultado:', result);
+      if (result) {
+
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/']);
+        });
+      }
     });
   }
 

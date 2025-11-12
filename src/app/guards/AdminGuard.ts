@@ -23,19 +23,18 @@ export class AdminGuard implements CanActivate {
       // Se for admin, permite o acesso à rota
       return true;
     } else {
-      // --- LÓGICA DA MENSAGEM ---
-      // 3. Se NÃO for admin, exibe a notificação
+
       this.snackBar.open('Acesso negado. Você não tem permissão para acessar esta página.', 'Fechar', {
-        duration: 5000, // A mensagem desaparecerá após 10 segundos
-        verticalPosition: 'top', // Posição na tela
+        duration: 5000,
+        verticalPosition: 'top',
         horizontalPosition: 'center',
-        panelClass: ['error-snackbar'] // Classe CSS para customização (opcional)
+        panelClass: ['error-snackbar']
       });
 
-      // 4. Redireciona para a página principal
+
       this.router.navigate(['/']);
 
-      // E bloqueia o acesso à rota atual
+
       return false;
     }
   }
