@@ -1,5 +1,3 @@
-// src/app/admin/gerenciar-salas/gerenciar-salas.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SalaService } from '../../services/sala.service';
@@ -21,7 +19,7 @@ export class GerenciarSalasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private salaService: SalaService // Seu sala.service.ts já está correto
+    private salaService: SalaService
   ) {
     this.salaForm = this.fb.group({
       nomeSala: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,16 +38,17 @@ export class GerenciarSalasComponent implements OnInit {
   carregarSalas(): void {
     this.isLoading = true;
     this.error = null;
-    this.salaService.listarTodas().subscribe(
-      (data) => {
-        this.salas = data.sort((a, b) => a.nomeSala.localeCompare(b.nomeSala));
+    this.salaService.listarTodas().subscribe({
+      next: (data) => {
+        this.salas = (data ?? []).sort((a, b) => a.nomeSala.localeCompare(b.nomeSala));
         this.isLoading = false;
       },
-      (err: any) => { // CORREÇÃO: Adicionado (err: any) para o TypeScript
+      error: (err: any) => {
         this.error = 'Erro ao carregar salas.';
         this.isLoading = false;
+        console.error('Erro ao carregar salas:', err);
       }
-    );
+    });
   }
 
   onSubmit(): void {
@@ -63,13 +62,13 @@ export class GerenciarSalasComponent implements OnInit {
     const salaDTO: SalaDTO = this.salaForm.value;
 
     if (this.isEditMode && this.salaSelecionadaId) {
-      // Atualizar
+      // Atualizar (inclui mudança do campo "ativo" via checkbox)
       this.salaService.atualizar(this.salaSelecionadaId, salaDTO).subscribe({
         next: () => {
           this.carregarSalas();
           this.resetForm();
         },
-        error: (err: any) => this.handleError(err, 'atualizar') // CORREÇÃO: (err: any)
+        error: (err: any) => this.handleError(err, 'atualizar')
       });
     } else {
       // Criar
@@ -78,7 +77,7 @@ export class GerenciarSalasComponent implements OnInit {
           this.carregarSalas();
           this.resetForm();
         },
-        error: (err: any) => this.handleError(err, 'criar') // CORREÇÃO: (err: any)
+        error: (err: any) => this.handleError(err, 'criar')
       });
     }
   }
@@ -92,27 +91,13 @@ export class GerenciarSalasComponent implements OnInit {
 
   onDeleteClick(id: number): void {
     if (confirm('Tem certeza que deseja DELETAR esta sala? Esta ação não pode ser desfeita.')) {
+      this.isLoading = true;
       this.salaService.deletar(id).subscribe({
         next: () => {
           this.carregarSalas();
           this.resetForm();
         },
-        error: (err: any) => this.handleError(err, 'deletar') // CORREÇÃO: (err: any)
-      });
-    }
-  }
-
-  onToggleAtivo(sala: SalaDTO): void {
-    const novoStatus = !sala.ativo;
-    const acao = novoStatus ? 'ativar' : 'desativar';
-
-    if (confirm(`Tem certeza que deseja ${acao} a sala "${sala.nomeSala}"?`)) {
-      this.salaService.atualizarStatus(sala.idSala!, novoStatus).subscribe({
-        next: () => {
-          this.carregarSalas();
-          this.resetForm();
-        },
-        error: (err: any) => this.handleError(err, acao) // CORREÇÃO: (err: any)
+        error: (err: any) => this.handleError(err, 'deletar')
       });
     }
   }
@@ -126,11 +111,21 @@ export class GerenciarSalasComponent implements OnInit {
   }
 
   private handleError(error: any, acao: string): void {
-    console.error(`Erro ao ${acao}:`, error);
-    this.error = error.error?.message || error.error || `Erro ao ${acao} sala. Tente novamente.`;
-    // Esta é a mensagem que você recebe do Java
-    if (error.status === 403) {
-      this.error = "Acesso negado. Você não tem permissão para esta ação.";
+    console.error(`Erro ao ${acao}:`, {
+      status: error?.status,
+      statusText: error?.statusText,
+      url: error?.url,
+      body: error?.error
+    });
+
+    if (error?.status === 0) {
+      this.error = 'Falha de rede/CORS. Verifique a API.';
+    } else if (error?.status === 401) {
+      this.error = 'Não autenticado. Faça login novamente.';
+    } else if (error?.status === 403) {
+      this.error = 'Acesso negado. Você não tem permissão para esta ação.';
+    } else {
+      this.error = error?.error?.message || error?.error || `Erro ao ${acao} sala. Tente novamente.`;
     }
     this.isLoading = false;
   }

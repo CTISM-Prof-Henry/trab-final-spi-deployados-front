@@ -1,12 +1,9 @@
-<!-- src/app/admin/gerenciar-salas/gerenciar-salas.component.html -->
-
-<div classa="container-gerenciamento">
+<div class="container-gerenciamento">
 
   <!-- 1. Formulário de Cadastro / Edição -->
   <div class="form-container card">
     <h2>{{ isEditMode ? 'Editar Sala' : 'Cadastrar Nova Sala' }}</h2>
 
-    <!-- O [formGroup] funciona porque você importou ReactiveFormsModule no app.module.ts -->
     <form [formGroup]="salaForm" (ngSubmit)="onSubmit()">
 
       <!-- Linha 1: Nome e Tipo -->
@@ -98,27 +95,21 @@
       </tr>
       </thead>
       <tbody>
-      <!-- Mostra salas ativas e inativas -->
       <tr *ngFor="let sala of salas" [class.tr-inativa]="!sala.ativo">
         <td>{{ sala.nomeSala }}</td>
         <td>{{ sala.tipoSala }}</td>
         <td>{{ sala.predio }}</td>
         <td>{{ sala.capacidade }}</td>
         <td>
-            <span [class]="sala.ativo ? 'status status-ativo' : 'status status-inativo'">
-              {{ sala.ativo ? 'Ativa' : 'Inativa' }}
-            </span>
+          <span [class]="sala.ativo ? 'status status-ativo' : 'status status-inativo'">
+            {{ sala.ativo ? 'Ativa' : 'Inativa' }}
+          </span>
         </td>
         <td class="action-buttons">
           <button class="btn-icon btn-edit" (click)="onEditClick(sala)" title="Editar">
             &#9998; <!-- Lápis -->
           </button>
-          <button *ngIf="sala.ativo" class="btn-icon btn-deactivate" (click)="onToggleAtivo(sala)" title="Desativar">
-            &#10006; <!-- X -->
-          </button>
-          <button *ngIf="!sala.ativo" class="btn-icon btn-activate" (click)="onToggleAtivo(sala)" title="Ativar">
-            &#10004; <!-- Check -->
-          </button>
+          <!-- REMOVIDOS os botões de ativar/desativar -->
           <button class="btn-icon btn-delete" (click)="onDeleteClick(sala.idSala!)" title="Deletar">
             &#128465; <!-- Lixeira -->
           </button>
