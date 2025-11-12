@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
   salas: any[] = []; // lista de salas do backend
   salaSelecionada!: any; // sala escolhida pelo usuário
 
+  refreshToken = 0;
+
   constructor(
     public dialog: MatDialog,
     private salaService: SalaService,
@@ -56,6 +58,7 @@ export class DashboardComponent implements OnInit {
 
   salaMudou(sala: any) {
     console.log('Sala selecionada no Dashboard:', sala);
+    this.refreshToken++;
   }
 
   abrirDialogAgendamento(): void {
